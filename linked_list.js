@@ -81,7 +81,83 @@ class List { //A empty list having no head neither a tail
         this.length++; //Increment the length of the list by 1
         return this; //Return the list
     }
+
+    // get(index) {
+    //     let counter, currentNode, valueNode;
+    //     if(index < 0 || index >= this.length) {
+    //         return null;
+    //     } else {
+    //         currentNode = this.head, valueNode = currentNode, counter = 0;
+    //         while(currentNode.next) {
+    //             if(counter == index) {
+    //                 return currentNode.val;
+    //             }
+    //             valueNode = currentNode;
+    //             currentNode = currentNode.next;
+    //             counter++;
+    //         }
+    //     }
+    // }
+
+    get(index) {
+        let counter, currentNode;
+        if(index < 0 || index >= this.length) {
+            return;
+        } else {
+            currentNode = this.head, counter = 0;
+            while(counter != index) {
+                currentNode = currentNode.next;
+                counter++;
+            }
+            // console.log(currentNode.val);
+            return currentNode;
+        }
+    }
+
+    set(val, index) {
+        let derivedNode = this.get(index); //Gets the node of the passed index argument
+        if(derivedNode == null) { //If the node doesn't exist
+            return false; //Return false
+        } else { //If the node exists
+            derivedNode.val = val; //Change the current value in the node found to the passed value 
+            return true; //Return true
+        }
+    }
+
+    insert(val, index) {
+        let newNode = new Node(val), preNode, currentNode;
+        if(index < 0 || index > this.length) return false;
+        if(index == this.length) {
+            this.tail.next = newNode;
+            this.length++;
+        } else {
+            currentNode = this.get(index);
+            preNode = this.get(index-1);
+            preNode.next = newNode;
+            newNode.next = currentNode;
+            this.length++;
+        }
+        return true;
+    }
+
+    remove(index) {
+        let preNode, afterNode, currentNode;
+        if(index < 0) return;
+        if(index == this.length-1) this.pop();
+        if(index == 0) this.shift();
+        else {
+            preNode = this.get(index-1);
+            currentNode = this.get(index);
+            afterNode = this.get(index+1);
+            preNode.next = afterNode;
+            this.length--;
+            return currentNode.val;
+        }
+    }
 }
+
+// 0 1 2 3  4
+// 3 5 8 10 12
 
 let list1 = new List();
 list1.push(5);
