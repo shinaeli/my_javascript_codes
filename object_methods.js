@@ -49,28 +49,29 @@ const super_hero = {
 super_hero.greet(); //"I'm Spiderman. My real name is Peter Parker while my girlfriend's Mary Jane Doe. I fly and save the world from bad people by using web. What about you? :)"
 console.log(Object.keys(super_hero)); //['heroName', 'realName', 'lover', 'weapon', 'greet']
 console.log(Object.values(super_hero)); //['Spiderman', 'Peter Parker', 'Mary Jane Doe', 'web', ƒ]
-let testArr = Object.entries(super_hero);
+let testArr = Object.entries(super_hero); //'Object.entries()' returns an array of the object's properties and values
 for(let arr of testArr) {
   console.log(`${arr[0]}: ${arr[1].toUpperCase()}`);
 }
 console.log('---OUTPUT: Object Entries(Keys and Values Including the Method)---');
-heroName: SPIDERMAN
-realName: PETER PARKER
-lover: MARY JANE DOE
-weapon: WEB
-Uncaught TypeError: arr[1].toUpperCase is not a function at <anonymous>:15:36
+// heroName: SPIDERMAN
+// realName: PETER PARKER
+// lover: MARY JANE DOE
+// weapon: WEB
+// Uncaught TypeError: arr[1].toUpperCase is not a function at <anonymous>:15:36
 //OR
 console.log('---OUTPUT: Object Entries(Keys and Values Excluding the Method)---');
 for(let i=0; i<testArr.length-1; i++) {
   console.log(`${testArr[i][0]}: ${testArr[i][1].toUpperCase()}`);
 }
-heroName: SPIDERMAN
-realName: PETER PARKER
-lover: MARY JANE DOE
-weapon: WEB
-Object.freeze(super_hero);
+// heroName: SPIDERMAN
+// realName: PETER PARKER
+// lover: MARY JANE DOE
+// weapon: WEB
+Object.freeze(super_hero); //Object.freeze prevents the mutation of an object
 super_hero['heroName'] = 'Captain America';
 console.log(super_hero); //{heroName: 'Spiderman', realName: 'Peter Parker', lover: 'Mary Jane Doe', weapon: 'web', greet: ƒ}
+//'Object.isFrozen()' checks if an object is freezed or not
 Object.isFrozen(super_hero); //true
 
 const detail1 = {
@@ -91,6 +92,6 @@ const detail1 = {
     return `${this.firstName} ${this.lastName} is currently employed and works as a ${this.occupation} at ${this.office}, ${this.officeLocation}, ${this.stateOfOrigin}. He also hails from ${this.origin_LGA}.`;
   }
 }
-const timos_info = Object.assign(detail1, detail2);
+const timos_info = Object.assign(detail1, detail2); //Assigns the properties, methods and values of an object to a new object
 console.log(timos_info);
 timos_info.job_description();
