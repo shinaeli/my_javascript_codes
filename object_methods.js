@@ -24,7 +24,7 @@ if(johns.calcBMI() > marks.calcBMI()) {
   alert(`Mark's BMI (${marks.calcBMI()}) is higher than John's BMI (${johns.calcBMI()}).`);
 }
 
-console.log('---Working with Object Methods: Oject.create(), Object.assign(), Object.entries(), Object.values(), Object.keys(), Object.freeze(), Object.isFrozen()---')
+console.log('---Working with Object Methods: Oject.create(), Object.assign(), Object.entries(), Object.values(), Object.keys(), Object.freeze(), Object.isFrozen()---');
 const johnDetail = {
   firstName: 'John',
   lastName: 'Omokayode',
@@ -95,3 +95,14 @@ const detail1 = {
 const timos_info = Object.assign(detail1, detail2); //Assigns the properties, methods and values of an object to a new object
 console.log(timos_info);
 timos_info.job_description();
+
+const person = new Object(); 
+person.fullName = 'Yomi Kokoma', person.age = 23;
+console.log(person); //{fullName: 'Yomi Kokoma', age: 23}
+Object.seal(person);
+person.satisfied = true, person.greet = function() {
+  return `Good day to you. My name is ${this.fullName}`;
+}
+console.log(person); //{fullName: 'Yomi Kokoma', age: 23}
+person.age = 26;
+console.log(person); //{fullName: 'Yomi Kokoma', age: 26}
