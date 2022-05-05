@@ -125,39 +125,104 @@ class List { //A empty list having no head neither a tail
     }
 
     insert(val, index) {
+        // Initiate three variables 'preNode','newNode', 'currentNode'
         let newNode = new Node(val), preNode, currentNode;
+        // Return 'false' if the index is less than zero or greater than the length of the list
         if(index < 0 || index > this.length) return false;
+        // If index is equal to the length of the list
         if(index == this.length) {
+            // Assign the node next to the tail node as the new node
             this.tail.next = newNode;
+            // Increase the length of the list by 1
             this.length++;
         } else {
+            // Get the node located at the index provided and assign it as the current node
             currentNode = this.get(index);
+            // Get the node existing before the current node ad assign it as the pre node
             preNode = this.get(index-1);
+            // Assign the node next to the pre node as the new node
             preNode.next = newNode;
+            // Assign the node next to the new node as the current node
             newNode.next = currentNode;
+            // Increase the length of the list by 1
             this.length++;
         }
         return true;
     }
 
     remove(index) {
+        // Initiate three variables 'preNode','afterNode', 'currentNode'
         let preNode, afterNode, currentNode;
+        // If index is less tha zero, return 'undefined'
         if(index < 0) return;
+        // If index is equal to the length of list minus 1, then pop method is called
         if(index == this.length-1) this.pop();
+        // If index is equal to zero, then shift method is called
         if(index == 0) this.shift();
         else {
+            // Get the node existing before the current node ad assign it as the pre node
             preNode = this.get(index-1);
+            // Get the node located at the index provided and assign it as the current node
             currentNode = this.get(index);
+            // Get the node existing after the current node and assign it as the pre node
             afterNode = this.get(index+1);
+            // Assign the node next to the preNode as the afterNode
             preNode.next = afterNode;
+            // Decrease the length of the list by 1
             this.length--;
+            // Return the value located in the currentNode
             return currentNode.val;
         }
+    }
+
+    // 13 -> 27 -> 32 -> 71
+    // H                  T
+    // 13 <- 27 <- 32 <- 71
+    // T                 H
+
+    reverse() {
+        // Initialize a variable 'formerheadNode' and assign it as the current head node
+        let formerheadNode = this.head;
+        // Assign the current head node as tail node
+        this.head = this.tail;
+        // Assign the tail node as formerheadNode
+        this.tail = formerheadNode;
+        // Initialize two variables 'nextNode', 'prevNode' and assign the prevNode to 'null'
+        let nextNode, prevNode = null;
+        // Looping through the list
+        for(let i=0; i<this.length; i++) {
+            // Assign the nextNode as the node next to the formerheadNode
+            nextNode = formerheadNode.next;
+            // The node next to the formerheadNode becomes the prevNode
+            formerheadNode.next = prevNode;
+            // Assign the formerheadNode as the prevNode
+            prevNode = formerheadNode;
+            // Assig the formerheadode as the nextNode
+            formerheadNode = nextNode;
+        }
+        // Return the whole list
+        return this;
+    }
+
+    print() {
+        // Initialize a empty array 'arr', a variale called 'currentNode' and assign it as the current head node
+        let arr = [], currentNode = this.head;
+        // While the currentNode exists
+        while(currentNode) {
+            // Push the value located in the curretNode into the empty array 'arr'
+            arr.push(currentNode.val);
+            // Assign the currentNode as the node located next to it
+            currentNode = currentNode.next;
+        }
+        // Once the loop is terminated, display the filled array in the console
+        console.log(arr);
     }
 }
 
 // 0 1 2 3  4
 // 3 5 8 10 12
+
+
 
 let list1 = new List();
 list1.push(5);

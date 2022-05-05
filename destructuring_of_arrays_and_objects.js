@@ -18,17 +18,18 @@ others: ['Fish', 'Catfish', 'Goat Meat', 'Bush Meat', 'Ponmo', 'Cow Meat']}
 
 //Object Destructuring
 const {weekday: getWeekdays, duration: getDuration} = restaurant['working_days'];  
-console.log(getWeekdays);
-console.log(getDuration);
+// console.log(getWeekdays); //['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+// console.log(getDuration); //8:00am - 21:00pm
 
 // Array Destructuring
 const [getMeals = 'poundo', getSoups = 'egusi', ] = restaurant.delicacies[0].meals;
 const [getMeals2, , , , ,getSoups2, , ] = restaurant.delicacies[0].soups;
 const [getSoups3, ,getMeals3, , , ] = restaurant.delicacies[0].others;
-console.log(getMeals2, getSoups2);
-console.log(getMeals, getSoups);
+console.log(getMeals2, getSoups2); //Efo Riro Egusi
+console.log(getMeals, getSoups); //Iyan White Rice
 console.log(`Sir. You ordered for ${getMeals} and ${getMeals2} with ${getMeals3} while your woman ordered for ${getSoups} and ${getSoups2} with ${getSoups3}.`);
 alert(`Sir. You ordered for ${getMeals} and ${getMeals2} with ${getMeals3} while your woman ordered for ${getSoups} and ${getSoups2} with ${getSoups3}.`);
+// Sir. You ordered for Iyan and Efo Riro with Goat Meat while your woman ordered for White Rice and Egusi with Fish.
 
 function getNames(obj) {
   const {obj1, obj2} = obj;
@@ -46,8 +47,7 @@ stringConcat([12, 90, 5, 306]);  //12905306
 
 const detectVote = x => x.voted == true;
 function totalVotes(arr) {
-  return `The total number of voter are ${arr.filter(detectVote).length
-  }`;
+  return `The total number of voters are ${arr.filter(detectVote).length}`;
 };
 var voters = [
   {name: 'Bob', age: 30, voted: true},
@@ -63,7 +63,7 @@ var voters = [
   {name: 'Jeff', age: 30, voted: true},
   {name: 'Zack', age: 19, voted: false}
 ];
-totalVotes(voters);  //'The total number of voter are 7'
+totalVotes(voters);  //'The total number of voters are 7'
 
 let colors = ['white', 'blue', 'yellow', 'black', 'red', 'green'];
 const [firstColor, secondColor, ...otherColors] = colors;
@@ -74,7 +74,7 @@ const classes = {
   secondHour: "Programming",
   thirdHour: "Biology"
 }
-const goToSecondClass = ({firstHour, secondHour, thirdHour} = classes) => `Time to go to ${secondHour} class!`;
+const goToSecondClass = ({ firstHour, secondHour, thirdHour } = classes) => `Time to go to ${secondHour} class!`;
 goToSecondClass();  //'Time to go to Programming class!'
 
 
@@ -83,14 +83,32 @@ const classes = {
   secondHour: "Programming",
   thirdHour: "Biology"
 }
-const goToSecondClass = ({first, secondHour, thirdHr} = classes) => `Time to go to ${secondHour} class!`;
-goToSecondClass();  //'Time to go to Programming class!'
-
-
-const classes = {
-  firstHour: "Ethics",
-  secondHour: "Programming",
-  thirdHour: "Biology"
-}
-const goToThirdClass = ({first, secondHr, thirdHour} = classes) => `Time to go to ${thirdHour} class!`;
+const goToThirdClass = ({ thirdHour: third } = classes) => `Time to go to ${third} class!`;
 goToThirdClass();  //'Time to go to Biology class!'
+
+// Exhibiting a destructuring of an object
+const detail = {
+  firstName: 'David Williams',
+  age: 24,
+  spouse: 'Joy Oliver',
+  family: {
+    father: 'Mr. Femi Williams',
+    mother: 'Mrs. Toriola Dennis Williams',
+    siblings: 6
+  }
+}
+// Destructuring the nested object gives me the whole nested object and its contents
+const { family, family: { father, mother, siblings } } = detail;
+console.log(family); //{father: 'Mr. Femi Williams', mother: 'Mrs. Toriola Dennis Williams', siblings: 6}
+const { firstName, age: currentAge, spouse: girlfriend_name, family: { siblings } } = detail;
+console.log(`${firstName} is ${currentAge}years old. His girlfriend is ${girlfriend_name}. He has ${siblings} siblings.`); //David Williams is 24years old. His girlfriend is Joy Oliver. He has 6 siblings.
+
+// Using object destructing to find the length of a string
+const { length } = 'Michael';
+console.log(length); //7
+
+// Exhibiting a destructuring of an array
+const monthlyIncome = [15000, 17400, 18000, 11050, 20010];
+const [, getIncome, , getInome2, ] = monthlyIncome;
+console.log(getIncome, getInome2); //17400 11050
+
