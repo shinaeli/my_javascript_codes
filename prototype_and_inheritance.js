@@ -21,7 +21,8 @@ let car2 = new Car('Honda', 'Japan'), car3 = new Car('Volvo', 'Germany');
 console.log(car1, car2, car3);
 console.log(Object.getPrototypeOf(car1)); //{constructor: ƒ}
 console.log(Car.prototype); //{constructor: ƒ}
-Car.prototype.description = function() { //A method is created by assigning the property to the constructor function's prototype
+//A method is created by assigning the property to the constructor function's prototype
+Car.prototype.description = function() { 
     return `I'm ${this.brandName}; made in ${this.country}.`;
 }
 console.log(car1.description()); //I'm Range Rover; made in United States of America.
@@ -29,6 +30,7 @@ console.log(car2.description()); //I'm Honda; made in Japan.
 console.log(car3.description()); //I'm Volvo; made in Germany.
 
 function RangeModel(brandName, country, model, max_speed, gear) {
+    // The 'call' mehod allows the 'RangeModel' constructor function to have access to the properties and functions of its parent constructor function
     Car.call(this, brandName, country)
     this.model = model;
     this.max_speed = max_speed;

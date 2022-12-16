@@ -116,7 +116,7 @@ isUnique([-2,-1,-1,0,1]); //4
 console.log('---Finding Unique Elements In An Array Using The Set Method---');
 let outSet = new Set([-2,-1,-1,0,1]), uniqueSet = Array.from(outSet);
 console.log(uniqueSet);
-
+// OR
 let newSet = new Set([1,2,3,4,4,4,7,7,12,12,13]), outputArr = [...newSet];
 console.log(outputArr);
 
@@ -282,9 +282,9 @@ function factorial(num) {
     return num * factorial(num-1);
   }
 }
-factorial(4);//24
-factorial(0);//1
-factorial(7);//5040
+factorial(4); //24
+factorial(0); //1
+factorial(7); //5040
 
 
 console.log('---Product of Array Using Recursion---');
@@ -353,8 +353,8 @@ function minSubArrayLen(arr, num) {
   }
   return 0;
 }
-minSubArrayLen([2,3,1,2,4,3], 7); //2
-minSubArrayLen([1,4,16,22,5,7,8,9,10], 55);
+// minSubArrayLen([2,3,1,2,4,3], 7); //2
+minSubArrayLen([1,4,16,22,5,7,8,9,10], 55); //0
 
 
 function findLongestSubstring(str) {
@@ -367,6 +367,7 @@ function findLongestSubstring(str) {
 }
 
 
+console.log('---Reversing A String---');
 function reverse(str) {
   if(str.length == 1) {
     return str;
@@ -376,6 +377,7 @@ function reverse(str) {
 }
 reverse('awesome'); //emosewa
 
+console.log('---Reversing A String---');
 function reverse(str) {
   if(typeof str != 'string') {
     return;
@@ -392,9 +394,10 @@ function reverse(str) {
 reverse('rithmschool');//'loohcsmhtir'
 reverse(245);//undefined
 
+console.log('---Searching for an Item in an Array Using the Linear Search Algorithm---');
 function linearSearch(arr, val) {//This searching algorithm works on both sorted and unsorted array
   for(let i=0; i<arr.length; i++) {
-    if(arr[i] === num) {
+    if(arr[i] === val) {
       return i;
     }
   }
@@ -403,6 +406,7 @@ function linearSearch(arr, val) {//This searching algorithm works on both sorted
 linearSearch([3,13,10,2,9,16,5,7,22,1], 5); //6
 linearSearch([3,13,10,2,9,16,5,7,22,1], 18); //-1
 
+console.log('---Searching for an Item in an Array Using the Binary Search Algorithm---');
 function biSearch(arr, val) {
   let leftPointer = 0, rightPointer = arr.length-1;
   while(leftPointer < rightPointer) {
@@ -498,8 +502,8 @@ const details = {
     return `${this.firstName} ${this.lastName} studied ${this.course} at the ${this.higherInstitution}`
   }
 }
-// details.age(); //'Oluwasina is 27years old.'
-// details.higherEducation();  //Oluwasina Omotosho studied Civil Engineering at the University of Ibadan'
+details.age(); //'Oluwasina is 27years old.'
+details.higherEducation();  //Oluwasina Omotosho studied Civil Engineering at the University of Ibadan'
 for(let key in details) {
   console.log(`${key}: ${details[key]}`);
 }
@@ -514,6 +518,8 @@ const {fullName, sex, school} = obj1;
 console.log(fullName, sex, school); //Adewale James Male undefined
 obj1.age = 25;
 console.log(obj1); //{fullName: 'Adewale James', age: 25, sex: 'Male', email: 'james_23@gmail.com'}
+obj1.school = 'Kalakuta University';
+console.log(obj1); //{fullName: 'Adewale James', age: 25, sex: 'Male', email: 'james_23@gmail.com', school: 'Kalakuta University'}
 
 
 console.log('---Working with JavaScript ES6 Class---');

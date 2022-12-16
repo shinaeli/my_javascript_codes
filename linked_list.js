@@ -19,9 +19,9 @@ class List { //A empty list having no head neither a tail
             this.tail = newNode; //Assign the new node to the tail as well
         } else { //If the head is not empty
             this.tail.next = newNode; //Assign the new node to the tail
-            this.tail = newNode; //This is to make sure that the tail still points a null
+            this.tail = newNode; //This is to make sure that the tail still points to null
         }
-        this.length++; //The length of the list increases after an element is added
+        this.length++; //The length of the list increases by 1 after an element is added
         return this;
     }
 
@@ -153,7 +153,7 @@ class List { //A empty list having no head neither a tail
     remove(index) {
         // Initiate three variables 'preNode','afterNode', 'currentNode'
         let preNode, afterNode, currentNode;
-        // If index is less tha zero, return 'undefined'
+        // If index is less than zero, return 'undefined'
         if(index < 0) return;
         // If index is equal to the length of list minus 1, then pop method is called
         if(index == this.length-1) this.pop();
@@ -197,7 +197,7 @@ class List { //A empty list having no head neither a tail
             formerheadNode.next = prevNode;
             // Assign the formerheadNode as the prevNode
             prevNode = formerheadNode;
-            // Assig the formerheadode as the nextNode
+            // Assign the formerheadNode as the nextNode
             formerheadNode = nextNode;
         }
         // Return the whole list

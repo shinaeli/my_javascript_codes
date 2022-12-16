@@ -279,15 +279,9 @@ sumOfDigits(6); //6
 sumOfDigits(246); //12
 
 console.log('---Print the first 100 prime numbers---');
-// for(let i=2; i<101; i++) {
-//   for(let k=2; k<=Math.floor(i/2); k++) {
-//     if(i % k != 0) {
-//       k += 1;
-//     } else {
-//       console.log(i);
-//     }
-//   }
-// }
+for(let num=2; num<101; num++) {
+  
+}
 
 
 console.log('---Determine if a number is prime or not---');

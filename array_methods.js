@@ -376,3 +376,52 @@ function curry(prim, fun) {
 var fun = function(val) {return val+50};
 var curry1 = curry(99, fun);
 console.log(curry1());
+
+
+const outcomes = new Array(9, 5, 11, 18, 20, 37, 4, 22);
+console.log(outcomes); //[9, 5, 11, 18, 20, 37, 4, 22]
+console.log(outcomes.length); //8
+
+const testSys = new Array('k');
+console.log(testSys, testSys.length, testSys[0], testSys[1]);
+
+const testers = Array.of('Grace', 'Tolu', 'Moji', 'Mayowa', 'Fredrick');
+// 'Array.of' method creates an array whose elements are the arguments passed to it.
+console.log(testers.length); //5
+console.log(testers); // ['Grace', 'Tolu', 'Moji', 'Mayowa', 'Fredrick']
+testers.pop();
+testers.pop();
+console.log(testers.length); //3
+testers.push('Davido');
+console.log(testers); //['Grace', 'Tolu', 'Moji', 'Davido']
+console.log(testers.length); //4
+
+const prices = [24, 18, 45, 30, 12, 33, 51, 29];
+const greaterThan45 = new Function('n', 'return n > 45');
+console.log(prices.find(greaterThan45)); //51
+// The 'findIndex' method returns the array element which satisfies the querying condition i.e. returns true.
+const lessThan30 = x => (x < 30) && (x % 6 == 0);
+console.log(prices.findIndex(lessThan30)); //0
+// The 'findIndex' method returns the index number of the array element which satisfies the querying condition i.e. returns true.
+
+const testAges = [13, 25, 6, 18, 9];
+testAges.fill(10, 1);
+// The 'fill' method is used to fill a empty array or overwrite all elements of an existig array with a new element.
+// It returns the newly updated array.
+console.log(testAges); //[13, 10, 10, 10, 10]
+const newAges = [22, 67, 31];
+newAges.fill(15, 1, 2);
+console.log(newAges); //[22, 15, 31]
+newAges.fill(12, 3, 5);
+// The length of an array cannot be increased by calling the 'fill' method on it.
+console.log(newAges); //[22, 15, 31]
+
+const testOutcomes = [13, 25, 6, 18, 9];
+testOutcomes.copyWithin(2, 1);
+// the 'copyWithin' method is used to copy all or parts of an existing array into the same array.
+console.log(testOutcomes); //[13, 25, 25, 6, 18]
+testOutcomes.copyWithin(3, 1, 2);
+console.log(testOutcomes); //[13, 25, 6, 25, 18]
+
+
+

@@ -257,3 +257,125 @@ seriousStudent.age();
 seriousStudent.changeCourse = 'Physics', seriousStudent.changebirthYear = 1996;
 console.log(seriousStudent);
 seriousStudent.walk();
+
+// A class serves as a blueprint for creating an object
+// A class is a first-class citize i Javascript just like a fuctio is.
+// It can be passed to a function, returned from a function and passed to a identifier i.e. a variable
+// The 'constructor' function is used to create and initialize the object's instance's own properties.
+class Detail {
+  constructor(name, birthplace, location, birthYear, currentYear=2022) {
+    this.name = name;
+    this.birthplace = birthplace;
+    this.location = location;
+    this.birthYear = birthYear;
+    this.currentYear = currentYear;
+  }
+
+  speak() {
+    return `My name is ${this.name}. I'm ${this.currentYear - this.birthYear}years old. 
+    I was born in ${this.birthplace} but I currently live in ${this.location}.`;
+  }
+
+  // The 'get' method can be used to retrieve a value from an object's property i.e. it's a accessor function alongside the 'set' method.
+  get age() {
+    return this.currentYear - this.birthYear;
+  }
+}
+
+let human1 = new Detail('Omotosho E. Oluwasina', 'Osogbo', 'Ibadan', 1995);
+console.log(human1.speak());
+// My name is Omotosho E. Oluwasina. I'm 27years old. 
+// I was born in Osogbo but I currently live in Ibadan.
+console.log(human1.age); //27
+
+
+// function showClass(classDef) {
+//   return new classDef();
+// }
+
+// let test = showClass(class {
+//   constructor(name) {
+//     this.name = name;
+//   }
+
+//   introduce() {
+//     return `Hi! I'm ${this.name}.`;
+//   }
+// })('James Coker');
+
+// console.log(test.introduce());
+
+
+// An Immediately Invoked Class Expression is known as 'singleton'.
+let schoolCensus = new class {
+  constructor(school, population) {
+    this.school = school;
+    // A class property's name can be different from the name assigned to its default value.
+    this.noOfStudents = population;
+  }
+
+  record() {
+    return `${this.school} has a total of ${this.noOfStudents} enrolled students.`;
+  }
+}('Our Lady $ St. Francis Catholic College', 12538);
+
+console.log(schoolCensus.record()); //Our Lady $ St. Francis Catholic College has a total of 12538 enrolled students.
+
+class Car {
+  constructor(carName, doors, openRoof, gearType, seats, started) {
+    this.carName = carName;
+    this.noOfDoors = doors;
+    this.openRoof = openRoof;
+    this.gear = gearType;
+    this.noOfSeats = seats;
+    this.started = started;
+  }
+
+  describeCar() {
+    if (this.openRoof == false) {
+      return `My ${this.carName} has ${this.noOfDoors} doors, no open-roof, ${this.gear} gear and ${this.noOfSeats} seats.`; 
+    } else {
+      return `My ${this.carName} has ${this.noOfDoors} doors, an open-roof, ${this.gear} gear and ${this.noOfSeats} seats.`;
+    }
+  }
+
+  startCar() {
+    this.started = true;
+    return `The ${this.carName} is started and moving....`;
+  }
+
+  stopCar() {
+    this.started = false;
+    return `....The ${this.carName} is stopped.`;
+  }
+}
+
+class MyCar extends Car {
+  constructor(carName, doors, openRoof, gearType, seats, started, engine) {
+    super(carName, doors, openRoof, gearType, seats, started, engine);
+    this.engineID = engine;
+  }
+
+  identifyEngine() {
+    return `My ${this.carName} has an engine number: ${this.engineID}.`;
+  }
+}
+
+let car1 = new Car('Mercedez Benz', 4, false, 'automatic', 4, false);
+console.log(car1.describeCar());
+// My Mercedez Benz has 4 doors, no open-roof, automatic gear and 4 seats.
+console.log(car1.startCar());
+// The Mercedez Benz is started and moving....
+console.log(car1.stopCar());
+// ....The Mercedez Benz is stopped.
+let car2 = new MyCar('Lexus', 4, true, 'manual', 7, true, 'LX2801JKV');
+console.log(car2.describeCar());
+// My Lexus has 4 doors, an open-roof, manual gear and 7 seats.
+console.log(car2.startCar());
+// The Lexus is started and moving....
+console.log(car2.stopCar());
+// ....The Lexus is stopped.
+console.log(car2.identifyEngine());
+// My Lexus has an engine number: LX2801JKV.
+
+

@@ -112,3 +112,44 @@ const monthlyIncome = [15000, 17400, 18000, 11050, 20010];
 const [, getIncome, , getInome2, ] = monthlyIncome;
 console.log(getIncome, getInome2); //17400 11050
 
+
+const names = ["Ada", "James", "Deji", "Kolade", "Mary", "Calvin", "Clifford"];
+const [firstName, , , fourthName, ...otherNames] = names;
+console.log(firstName, fourthName) //Ada Kolade
+for(let i=0; i < otherNames.length; i++) {
+  console.log(otherNames[i])
+}
+// Mary
+// Calvin
+// Clifford
+console.log(otherNames); //['Mary', 'Calvin', 'Clifford']
+
+
+const user = {id: '156gdf2k', userName: 'OGChiefKeef280', email: 'keefylord@gmail.com', phone: +2348052240619};
+const {id, userName: title, email: mail, phone: contact} = user;
+console.log(id, title, mail, contact); //156gdf2k OGChiefKeef280 keefylord@gmail.com 2348052240619
+
+
+const animal = {family: 'dog', breed: 'bull dog', sex: 'male'};
+const {family: species, sex} = animal;
+console.log(species, sex); //dog male
+
+
+const singleDetail = {
+  firstName: 'David Williams',
+  age: 24,
+  spouse: 'Joy Oliver',
+  family: {
+    father: 'Mr. Femi Williams',
+    mother: 'Mrs. Toriola Dennis Williams',
+    siblings: ['Tobiloba', 'Timilehin', 'Shade', 'Collins', 'Tolulope', 'Fadekemi']
+  }
+};
+const {spouse: wife, family: relatives} = singleDetail;
+console.log(wife, relatives); //Joy Oliver {father: 'Mr. Femi Williams', mother: 'Mrs. Toriola Dennis Williams', siblings: Array(6)}
+const {siblings: brothersAndSisters} = singleDetail.family;
+const [, , firstDaughter, , mostTroublesome, lastBorn] = singleDetail.family.siblings;
+console.log(brothersAndSisters); //['Tobiloba', 'Timilehin', 'Shade', 'Collins', 'Tolulope', 'Fadekemi']
+console.log(brothersAndSisters.length); //6
+console.log(firstDaughter, lastBorn, mostTroublesome); //Shade Fadekemi Tolulope
+

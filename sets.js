@@ -56,3 +56,57 @@ for(let entries of studentNames.entries()) {
 // Dayo: Dayo
 // Wumi: Wumi
 // Tolulope: Tolulope
+
+
+// A set is an unordered collection of unique items i.e. it does't contain duplicates
+const test = new Set([12, 3, 5, 5, 7, 'James', 12, 'Moses', 5, 8, 3, 'James', 46, 20, 'Ada', 29, 9, 'Ada', 'Tayo', 150]);
+console.log(test); //Set(14) {12, 3, 5, 7, 'James', …}
+console.log(test.has('Kola')); //false
+//The 'has' method checks if the element or item passed as an argument exists in the set
+console.log(test.has(5)); //true
+console.log(test.has('Moses Orimolade')); //false
+console.log(test.has('Ada')); //true
+console.log(test.has(12)); //true
+console.log(test.has('18')); //false
+console.log(test.has('George')); //false
+console.log(test.size); //14
+test.add('Wemimo');
+test.add(10);
+// The 'add' method is used to add an element or item to a set.
+test.add('Wemimo');
+// 'Wemimo' already exists in the set 'test'. So, the above statement is ignored.
+test.add('007');
+console.log(test.size); //17
+// The 'size' method counts the number of items that are present in a set.
+test.delete(7);
+test.delete('Ada');
+// The 'delete' method is used to remove an element or item from a set.
+console.log(test.size); //15
+test.add('Olumide');
+test.add('Olumide');
+console.log(test.size); //16
+const testArr = [...test];
+// The 'spread' operator is also used to convert a set into an array
+console.log(testArr); //[12, 3, 5, 'James', 'Moses', 8, 46, 20, 29, 9, 'Tayo', 150, 'Wemimo', 10, '007', 'Olumide']
+for (let item of test) {
+  console.log(item);
+}
+// 12
+// 3
+// 5
+// James
+// Moses
+// 8
+// 46
+// 20
+// 29
+// 9
+// Tayo
+// 150
+// Wemimo
+// 10
+// 007
+// Olumide
+
+// const artClass = new Set('Tomi', 'Fisayo', 'James', 'Lola', 'Fisayo', 'Mathematics', 'Joshua', 'Tola', 'Dayo', 'Government', 'English Language', 'Biology'); 
+// const scienceClass = new Set('Tunde', 'Joshua', 'Mathematics', 'Chukwudi', 'Funmilayo', 'Dayo', 'English Language', 'Physics', 'Chemistry', 'Lola', 'Biology');
