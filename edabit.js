@@ -196,3 +196,92 @@ class Relative extends Person {
 		super()
 	}
 }
+
+
+// A boomerang is a V-shaped sequence that is either upright or upside down. 
+// Specifically, a boomerang can be defined as: sub-array of length 3, with the first and last digits being the same and the middle digit being different.
+// Some boomerang examples:
+// [3, 7, 3], [1, -1, 1], [5, 6, 5]
+// Create a function that returns the total number of boomerangs in an array.
+// [3, 7, 3, 2, 1, 5, 1, 2, 2, -2, 2]
+function countBoomerangs(arr) {
+	let i = 0, output = [];
+	let diff1, diff2;
+	while(i < arr.length) {
+		let samples = [];
+		diff1 = arr[i+1] - arr[i];
+		diff2 = arr[i+1] - arr[i+2];
+		if((diff1 == diff2) && (diff1 != 0 && diff2 != 0)) {
+			samples.push(arr[i], arr[i+1], arr[i+2]);
+			output.push(samples);
+		}
+		i+=1;
+	}
+	console.log(output);
+	return output.length;
+}
+console.log(countBoomerangs([9, 5, 9, 5, 1, 1, 1])); //2
+console.log(countBoomerangs([5, 6, 6, 7, 6, 3, 9])); //1
+console.log(countBoomerangs([4, 4, 4, 9, 9, 9, 9])); //0
+
+// Create a function that determines whether a number is Oddish or Evenish. 
+// A number is Oddish if the sum of all of its digits is odd, and a number is Evenish if the sum of all of its digits is even. 
+// If a number is Oddish, return "Oddish". Otherwise, return "Evenish".
+// For example, oddishOrEvenish(121) should return "Evenish", since 1 + 2 + 1 = 4. oddishOrEvenish(41) should return "Oddish", 
+// since 4 + 1 = 5.
+function oddishOrEvenish(num) {
+	let strNum = String(num), total = 0;
+	for(let i=0; i<strNum.length; i++) {
+		total += Number(strNum[i]);
+	}
+	return total % 2 == 0 ? "Evenish" : "Oddish";
+}
+console.log(oddishOrEvenish(43)); //'Oddish'
+console.log(oddishOrEvenish(373)); //'Oddish'
+console.log(oddishOrEvenish(4433)); //"Evenish"
+
+// Two players draw a pair of numbered cards so that both players can form a 2 digit number. 
+// A winner can be decided if one player's number is larger than the other.
+// However, there is a rule where a player can swap any one of their cards with any one of the other player's cards in a gamble to get a higher number! 
+// Note that it is illegal to swap the order of your own cards. 
+// That means if you draw a 1 then a 9, you cannot swap them to get 91.
+// Numbered Cards
+// Paul's strategy is to always swap his lowest number with the opponent's ten's digit. Return whether this results in Paul winning the round.
+// n1 is Paul's number
+// n2 is his opponent's number
+// Worked Example
+// swap_cards(41, 79) ➞ true
+// // Paul's lowest number is 1
+// // The opponent's ten's digit is 7
+// // After the swap: 47 > 19
+// // Paul wins the round
+// Examples
+// swapCards(41, 98) ➞ true
+
+// swapCards(12, 28) ➞ true
+
+// swapCards(67, 53) ➞ false
+
+// swapCards(77, 54) ➞ true
+// Notes
+// If both of Paul's digits are the same, swap the ten's digit with the opponent's (paul likes to live riskily).
+// The cards don't include the number 0.
+function swapCards(n1, n2) {
+	if(n1 % 10 == 0 || n2 % 10 == 0) {
+		return 'Choose another card aside from zero';
+	}
+	let strNum1 = String(n1), tens = String(n2)[0], lowest = 0;
+	if(Number(strNum1[0]) >= Number(strNum1[1])) {
+		lowest = strNum1[1];
+		return Number(strNum1[0] + tens) > Number(lowest + String(n2)[1])
+	} else {
+		lowest = strNum1[0];
+		return Number(tens + strNum1[0]) > Number(lowest + String(n2)[1]);
+	}
+}
+swapCards(50, 63); //'Choose another card aside from zero'
+swapCards(41, 79); //true
+swapCards(41, 98); //true
+swapCards(12, 28); //true
+swapCards(67, 53); //false
+swapCards(77, 54); //true
